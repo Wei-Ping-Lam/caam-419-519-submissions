@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage[margin=0.5in]{geometry}
+\usepackage{listings}
 
 \title{CAAM 519, Homework \#1: \LaTeX\ Submission}
 \author{\texttt{wnl1}}
@@ -96,7 +97,10 @@ pyrite.clear.rice.edu
 \end{verbatim}
 
 \section{A script to build a LaTeX document while hiding auxiliary files}
+\lstinputlisting[language=bash, basicstyle=\ttfamily, caption={Bash script to build LaTeX document.}]{clean-build.sh}
 
+The first line is a shebang command that tells the compiler to execute the script using the Bash shell. The next statement asks if the hidden directory ".build" does not exists. If it doesn't exists, then the script makes a new hidden directory called ".build". If the hidden directory ".build" does already exist, the script does nothing. Next, the script compiles a LaTeX project (whose name, denoted by \$1,  is given as an argument to the bash script) using pdflatex. This produces 3 files: the project name with the extensions ".pdf", ".aux", ".log". the files with the extensions ".aux" and ".log" are moved to the hidden directory ".build".
 
+It is possible if someone wanted to look at the .log or .aux to help edit their LaTeX file or know additional detail about their file, it may be harder for them to access those files. Also,  if someone wanted to compile a LaTeX file, but wanted the output to be something else other than a .pdf file, this script would not work. Additionally, a user could want to have additionally options (such as halt-on-error) while compiling a .tex file, which are not available using this script.
 
 \end{document}
