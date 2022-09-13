@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+\title{CAAM 519, Homework \#1: \LaTeX\ Submission}
+\author{\texttt{wnl1}}
+\date{September 7, 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Communicating with remote machines via ssh}
+
+\begin{verbatim}
+1:
+weiping@weiping-VirtualBox:~$ ssh wnl1@ssh.clear.rice.edu
+
+2:
+The authenticity of host 'ssh.clear.rice.edu (128.42.124.180)' can't be established.
+ECOSA key fingerprint is SHA256:5KMG+chd+4/0+nMB4d+xGS7Yq0HepQ+QdULZUMGQyao.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added "ssh.clear.rice.edu,128.42.124.180' (ECDSA) to the list of known hosts.
+The Rice University Network - Unauthorized access is prohibited
+Password:
+Duo two-factor login for wnl1
+
+Enter a passcode or select one of the following options:
+
+ 1. Duo Push to XXX-XXX-3210
+ 2. Phone call to XXX-XXX-3210
+ 3. SMS passcodes to XXX-XXX-3210
+
+Passcode or option (1-3): 1
+Success. Logging you in...
+The Rice University Network
+ ===========================
+ Unauthorized use is prohibited.
+
+ This computer system is for authorized users only. Individuals using this
+ system without authority or in excess of their authority are subject to
+ having all their activities on this system monitored and recorded or
+ examined by any authorized person, including law enforcement, as system
+ personnel deem appropriate. In the course of monitoring individuals
+ improperly using the system or in the course of system maintenance, the
+ activities of authorized users may also be monitored and recorded. Any
+ material so recorded may be disclosed as appropriate. Anyone using this
+ system consents to these terms.
+
+ Problems and/or questions should be submitted via the problem tracking
+ system form: http://helpdesk.rice.edu
+
+CURRENT USAGE AND LOAD ON THE COMPUTE NODES:
+  Mon Sep 12 18:20:01 CDT 2022
+
+ System                     # Users         Load( 5, 10, 15 minute)
+   agate.clear.rice.edu         4             0.27, 0.31, 0.27
+   amber.clear.rice.edu         2             0.23, 0.37, 0.38
+   cobalt.clear.rice.edu        1             0.05, 0.03, 0.05
+   jade.clear.rice.edu          4             0.10, 0.10, 0.11
+   onyx.clear.rice.edu          4             0.03, 0.26, 0.29
+   opal.clear.rice.edu          6             0.15, 0.16, 0.15
+   pyrite.clear.rice.edu        5             1.07, 1.18, 1.39
+
+NOTE: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+   Please log an RT ticket for any issues you may have.
+
+   Please log a ticket at https://help.rice.edu if you have any of the following:
+        Feel documentation 1s lacking.
+        Have trouble getting into the system.
+        Feel the system is missing a tool.
+
+   NOTE: If you don't have a home drive when using clear, please
+         create a ticket in help.rice.edu Be sure to put
+         "need clear home directory" in the subject and one will
+         be setup for you. Include your Course (dept and number) or
+         a faculty sponsor if not for a course.
+
+   FACULTY: Please help us pre-populate home drives for your class.
+   Provide us with your course number in an RT ticket like Note above.
+
+   NOTE: rclone added to clear. More information on kb.rice.edu soon.
+
+   NOTE: ghe (haskell) updated on clear. Run "PATH=$PATH:/clear/apps/ghc/bin" to use.
+
+   CLEAR NEWS -- https://kb.rice.edu/internal/page.php?id=71856
+   Tips and Hints -- https://kb.rice.edu/internal/page.php?id=71857
+
+Could not chdir to home directory /storage-home/w/wnl1: No such file or directory
+/usr/bin/id: cannot find name for group ID 72496
+
+3:
+[wnl1@pyrite /]$ echo $HOSTNAME
+pyrite.clear.rice.edu
+\end{verbatim}
+
+\section{A script to build a LaTeX document while hiding auxiliary files}
+
+
+
+\end{document}
