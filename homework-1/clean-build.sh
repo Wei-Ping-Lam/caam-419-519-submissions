@@ -1,8 +1,9 @@
 #!/bin/bash
-# $1 project name
-# $2 project (without a file extension
 
 if [ ! -d .build ]
 then
 	mkdir .build
 fi
+
+pdflatex $1.tex
+mv $1.aux $1.log .build
