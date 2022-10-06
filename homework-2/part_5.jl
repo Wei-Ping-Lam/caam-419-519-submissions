@@ -17,12 +17,14 @@ scatter!(p1, saved_solutions_fe1[1][1,:], saved_solutions_fe1[1][2,:], xlims=(-1
 scatter!(p1, saved_solutions_fe1[3][1,:], saved_solutions_fe1[3][2,:], xlims=(-1, 1), ylims=(-1, 1), label = "t = 1")
 title!(p1, "Forward Euler Initial vs Final Positions")
 plot(p1)
+#png(p1, "FE_1_second_solution")
 
 p2 = plot()
 scatter!(p2, saved_solutions_em1[1][1,:], saved_solutions_em1[1][2,:], xlims=(-1, 1), ylims=(-1, 1), label = "t = 0")
 scatter!(p2, saved_solutions_em1[3][1,:], saved_solutions_em1[3][2,:], xlims=(-1, 1), ylims=(-1, 1), label = "t = 1")
 title!(p2, "Explicit Midpoint Initial vs Final Positions")
 plot(p2)
+#png(p2, "EM_1_second_solution")
 
 # Section 1.2
 num_particles = 100
