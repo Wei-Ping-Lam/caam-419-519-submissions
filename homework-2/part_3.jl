@@ -13,14 +13,14 @@ error_fe = zeros(length(dt))
 Nsteps_em = Vector{Int64}(undef, length(dt))
 error_em = zeros(length(dt))
 for i = eachindex(dt)
-    Nsteps_fe[i] = ceil(Int, 5 / dt[i])
-    Nsteps_em[i] = ceil(Int, 5 / dt[i])*2
+    Nsteps_fe[i] = ceil(Int, 5 / dt[i]) + 1
+    Nsteps_em[i] = ceil(Int, 5 / dt[i])*2 + 1
     v1 = copy(u)
     v2 = copy(u)
     saved_solutions_fe = solve(ForwardEuler(), v1, rhs!, (0, 5), dt[i], [5])
     saved_solutions_em = solve(ExplicitMidpoint(v2), v2, rhs!, (0, 5), dt[i], [5])
-    error_fe[i] += norm(saved_solutions_fe[3] - saved_solutions_fe[1])
-    error_em[i] += norm(saved_solutions_em[3] - saved_solutions_em[1])
+    error_fe[i] = norm(saved_solutions_fe[3] - saved_solutions_fe[1])
+    error_em[i] = norm(saved_solutions_em[3] - saved_solutions_em[1])
 end
 
 p1 = plot()
