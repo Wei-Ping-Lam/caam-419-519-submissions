@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx}
-\usepackage[margin=0.75in]{geometry}
+\usepackage[margin=0.6in]{geometry}
 \usepackage[charsperline=68]{jlcode}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -16,7 +16,7 @@
 
 \section{Verification of The Correctness of The Forward Euler and Explicit Midpoint ODE Solver}
 
-Figures \ref{fig:FE1} and \ref{fig:EM1} show the initial and final position of 100 particles over a 1 second time span. Figure \ref{fig:FE1} used the Forward Euler method while Figures \ref{fig:EM1} used the Explicit Midpoint method to solve for the final position.
+Figures \ref{fig:FE1} and \ref{fig:EM1} show the initial and final position of 100 particles over a 1 second time span in a velocity field given by Equation \ref{eq:velocity} below. Figure \ref{fig:FE1} used the Forward Euler method while Figure \ref{fig:EM1} used the Explicit Midpoint method to solve for the final position.
 
 \begin{figure}[h!]
   \centering
@@ -44,7 +44,7 @@ Figure \ref{fig:EvT} displays the error of both methods at different time steps.
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=4in]{Error vs Timestep Size.png}
+  \includegraphics[width=4.6in]{Timestep Size vs Error.png}
   \caption{Solution error at varying time-steps.}
   \label{fig:EvT}
 \end{figure}
@@ -55,12 +55,12 @@ Listing \ref{code1} shows the command to check the type stability of the \jlinl{
 
 {\LARGE
 \begin{jllisting}[caption={Type stable check command.}, label=code1]
-num_particles = 100
-du = zeros(2, num_particles)
-u = 0.1 .+ 0.45 * rand(2, num_particles)
-parameters = [5]
-t = 1.324
-@code_warntype rhs!(du, u, parameters, t)
+num_particles = 100 # number of particles used in simulation
+du = zeros(2, num_particles) # array for storing velocity of particles, initialized to zero
+u = 0.1 .+ 0.45 * rand(2, num_particles) # intitial position of particles
+parameters = [5] # parameter for specified velocity field
+t = 1.324 # randomly chosen point in time
+@code_warntype rhs!(du, u, parameters, t) # testing type stability with a representative set of inputs defined above
 \end{jllisting}
 }
 
@@ -86,11 +86,11 @@ Listing \ref{code3} shows the command to check the speed of the \jlinl{rhs!} fun
 
 {\LARGE
 \begin{jllisting}[caption={Type stable check command.}, label=code3]
-num_particles = 100
-du = zeros(2, num_particles)
-u = 0.1 .+ 0.45 * rand(2, num_particles)
-parameters = [5]
-t = 1.324
+num_particles = 100 # number of particles used in simulation
+du = zeros(2, num_particles) # array for storing velocity of particles, initialized to zero
+u = 0.1 .+ 0.45 * rand(2, num_particles) # intitial position of particles
+parameters = [5] # parameter for specified velocity field
+t = 1.324 # randomly chosen point in time
 @btime rhs!($du, $u, $parameters, $t)
 \end{jllisting}
 }
@@ -107,11 +107,11 @@ Listing \ref{code5} shows the command to check the type stability of the \jlinl{
 
 {\LARGE
 \begin{jllisting}[caption={Type stable check command.}, label=code5]
-num_particles = 100
-u = 0.1 .+ 0.45 * rand(2, num_particles)
-tspan = (0, 5)
-dt = 1/512
-parameters = [5]
+num_particles = 100 # number of particles used in simulation
+u = 0.1 .+ 0.45 * rand(2, num_particles) # intitial position of particles
+tspan = (0, 5) # randomly chosen time span
+dt = 1/512 # randomly chosen time step
+parameters = [5] # parameter for specified velocity field
 @code_warntype solve(ForwardEuler(), u, rhs!, tspan, dt, parameters)
 \end{jllisting}
 }
@@ -135,13 +135,10 @@ Figure \ref{fig:EvN} displays the error of both methods at different number of \
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=4in]{Error vs Number of rhs! Evaluations.png}
+  \includegraphics[width=4.6in]{Number of rhs! Evaluations vs Error.png}
   \caption{Solution error at varying number of rhs! evaluations.}
   \label{fig:EvN}
 \end{figure}
-
-\section{TBD}
-
 
 
 \end{document}
