@@ -79,6 +79,7 @@ Locals
   N::Int64
   C::Int64
   i::Int64
+Body::Nothing
 \end{jllisting}
 }
 
@@ -97,7 +98,7 @@ t = 1.324 # randomly chosen point in time
 
 {\LARGE
 \begin{jllisting}[caption={Type stable check output.}, label=code4]
-3.125 μs (0 allocations: 0 bytes)
+4.4 μs (0 allocations: 0 bytes)
 \end{jllisting}
 }
 
@@ -128,6 +129,7 @@ Arguments
   tspan::Tuple{Int64, Int64}
   dt::Float64
   parameters::Vector{Int64}
+Body::Vector{Matrix{Float64}}
 \end{jllisting}
 }
 
