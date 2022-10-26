@@ -10,9 +10,9 @@ include("part_2.jl")
 num_particles = 100 # number of particles used in simulation
 u = 0.1 .+ 0.45 * rand(2, num_particles) # intitial position of particles
 v3 = copy(u) # copying value of initial particle positions
-saved_solutions_fe1 = solve(ForwardEuler(), v3, rhs!, (0, 1), 1/512, [5]) # solving for particle positions using Forward Euler method with timespan of 1 sec and dt of 1/512 under a specified velocity field
+saved_solutions_fe1 = solve(ForwardEuler(), v3, rhs!, (0, 1), 1/1024, [5]) # solving for particle positions using Forward Euler method with timespan of 1 sec and dt of 1/512 under a specified velocity field
 v4 = copy(u) # copying value of initial particle positions
-saved_solutions_em1 = solve(ExplicitMidpoint(v4), v4, rhs!, (0, 1), 1/512, [5]) # solving for particle positions using Explicit Midpoint method with timespan of 1 sec and dt of 1/512 under a specified velocity field
+saved_solutions_em1 = solve(ExplicitMidpoint(v4), v4, rhs!, (0, 1), 1/1024, [5]) # solving for particle positions using Explicit Midpoint method with timespan of 1 sec and dt of 1/512 under a specified velocity field
 
 # Plotting 1-second before and after solution using Forward Euler method
 p1 = plot()
@@ -20,7 +20,7 @@ scatter!(p1, saved_solutions_fe1[1][1,:], saved_solutions_fe1[1][2,:], xlims=(-1
 scatter!(p1, saved_solutions_fe1[3][1,:], saved_solutions_fe1[3][2,:], xlims=(-1, 1), ylims=(-1, 1), label = "t = 1")
 title!(p1, "Forward Euler Initial vs Final Positions")
 plot(p1)
-#png(p1, "FE_1_second_solution")
+png(p1, "FE_1_second_solution")
 
 # Plotting 1-second before and after solution using Explicit Midpoint method
 p2 = plot()
@@ -28,7 +28,7 @@ scatter!(p2, saved_solutions_em1[1][1,:], saved_solutions_em1[1][2,:], xlims=(-1
 scatter!(p2, saved_solutions_em1[3][1,:], saved_solutions_em1[3][2,:], xlims=(-1, 1), ylims=(-1, 1), label = "t = 1")
 title!(p2, "Explicit Midpoint Initial vs Final Positions")
 plot(p2)
-#png(p2, "EM_1_second_solution")
+png(p2, "EM_1_second_solution")
 
 # Section 1.2
 num_particles = 100 # number of particles used in simulation
