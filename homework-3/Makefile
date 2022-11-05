@@ -19,14 +19,17 @@ DEPS = $(INC_FILES)
 
 # Define target "all". Since this is the first target, it is always run.
 # Add additional files to build to the right hand side of this target.
-all: main 
+all: main verify_and_time
 
 # This builds the "main.c" file. Note that: 
 #   @, <, ^ are "automatic variables"
 #   "@" refers to the target (left hand side of the ":")
 #   "^" refers to the prerequisites (right hand side of the ":")
 main: main.o $(OBJ_FILES)
-	$(CC) $^ $(CFLAGS) -o $@
+	$(CC) $^ $(CFLAGS) -o $@ -lm
+
+verify_and_time: verify_and_time.o $(OBJ_FILES)
+	$(CC) $^ $(CFLAGS) -o $@ -lm
 
 # Here, we build additional .o files. THIS SHOULD NOT BE CHANGED.
 # We use "<", which stands for the first prerequisite. 

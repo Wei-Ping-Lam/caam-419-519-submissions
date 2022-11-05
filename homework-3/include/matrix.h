@@ -15,5 +15,5 @@ void print_Matrix(Matrix* A);
 Matrix * allocate_Matrix(int m, int n);
 void multiply_Matrix_Vector(Vector* out, Matrix* A, Vector* x);
 void free_Matrix(Matrix* A);
-
+double time_Matrix_multiply(void (*mul)(Vector*, Matrix*, Vector*), Vector* out, Matrix* A, Vector* x);
 

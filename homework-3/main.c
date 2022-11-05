@@ -1,36 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "vector.h"
 #include "matrix.h"
+#include "DiagonalMatrix.h"
+#include "UpperTriangularMatrix.h"
+#include "TridiagonalMatrix.h"
 
 int main(void){
 
-  int m = 5;
   int n = 5;
-  Matrix * A = allocate_Matrix(m, n);
-  Vector * x = allocate_Vector(n);
-
-  for (int i = 0; i < m; ++i){
+  
+  Matrix * A = allocate_Matrix(n, n);
+  for (int i = 0; i < n; ++i){
     for (int j = 0; j < n; ++j){
       A->ptr[i][j] = (double) (i+j);
     }
   }
-  for (int j = 0; j < n; ++j){
-    x->ptr[j] = j+1;
-  }
-
-  print_Matrix(A);
-  print_Vector(x);
-
-  // test matrix-vector multiplication
-  Vector * out = allocate_Vector(m);
-  multiply_Matrix_Vector(out, A, x);
-  print_Vector(out);
-  printf("The norm of A*x is %f\n", norm(out));
   
+  // Printing diagonal matrix
+  DiagonalMatrix * B = DiagonalMatrix_copy(A);
+  printf("Running Diagonal Matrix...\n");
+  print_DiagonalMatrix(B);
+  
+  // Printing upper triangular diagonal matrix
+  UpperTriangularMatrix * C = UpperTriangularMatrix_copy(A);
+  printf("Running Upper Triangular Matrix...\n");
+  print_UpperTriangularMatrix(C);
+  
+  // Printing tridiagonal matrix
+  TridiagonalMatrix * D = TridiagonalMatrix_copy(A);
+  printf("Running Tridiagonal Matrix...\n");
+  print_TridiagonalMatrix(D);
+  
+  free_DiagonalMatrix(B);
+  free_UpperTriangularMatrix(C);
+  free_TridiagonalMatrix(D);
   free_Matrix(A);
-  free_Vector(x);
-  free_Vector(out);
 
 }
 

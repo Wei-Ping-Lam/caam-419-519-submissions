@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "matrix.h"
 
-Matrix* allocate_Matrix(m, n){
+Matrix* allocate_Matrix(int m, int n){
   double ** ptr = malloc(sizeof(double*) * m);
 
   // allocate contiguous memory for the
@@ -44,4 +45,15 @@ void multiply_Matrix_Vector(Vector* out, Matrix* A, Vector* x){
       out->ptr[i] += A_ij * x_j;
     }
   }
+}
+
+double time_Matrix_multiply(void (*mul)(Vector*, Matrix*, Vector*), Vector* out, Matrix* A, Vector* x){
+  clock_t start = clock();
+  int num_samples = 100;
+  for (int i = 0; i < num_samples; ++i){
+    (*mul)(out, A, x);
+  }
+  clock_t end = clock();
+  double time_elapsed = ((double) (end - start)) / CLOCKS_PER_SEC;
+  return time_elapsed/num_samples;
 }
