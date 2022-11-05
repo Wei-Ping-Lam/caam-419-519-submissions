@@ -40,9 +40,7 @@ void print_Matrix(Matrix * A){
 void multiply_Matrix_Vector(Vector* out, Matrix* A, Vector* x){
   for (int i = 0; i < A->m; ++i){
     for (int j = 0; j < A->n; ++j){
-      double A_ij = A->ptr[i][j];
-      double x_j = x->ptr[j];
-      out->ptr[i] += A_ij * x_j;
+      out->ptr[i] += A->ptr[i][j] * x->ptr[j];
     }
   }
 }
