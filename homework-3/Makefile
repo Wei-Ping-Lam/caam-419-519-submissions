@@ -39,6 +39,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(DEPS)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
-	rm -f main $(OBJ_DIR)/*.o *~ *.o 
+	rm -f main verify_and_time $(OBJ_DIR)/*.o *~ *.o 
 
 
