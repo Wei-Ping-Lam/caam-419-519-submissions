@@ -51,10 +51,9 @@ UpperTriangularMatrix* UpperTriangularMatrix_copy(Matrix* A){
 }
 
 void multiply_UpperTriangularMatrix_Vector(Vector* out, UpperTriangularMatrix* A, Vector* x){
-  int N = A->n;
   for (int i = 0; i < A->n; ++i){
     for (int j = i; j < A->n; ++j){
-      out->ptr[i] += A->ptr[i*(N - 1) - i*(i - 1)/2 + j] * x->ptr[j];
+      out->ptr[i] += A->ptr[i*(A->n - 1) - i*(i - 1)/2 + j] * x->ptr[j];
     }
   }
 }
