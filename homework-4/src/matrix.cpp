@@ -41,3 +41,131 @@ void Matrix::print(){
   }
   std::cout << "]" << std::endl;    
 }
+
+Matrix & Matrix::operator=(const Matrix & x){
+  for (int i = 0; i < _rows; ++i) {
+    for (int j = 0; j < _columns; ++j) {
+      this->_ptr[i][j] = x._ptr[i][j];
+    }
+  }
+  return (*this);
+}
+
+// (double x) + y
+Matrix operator+(const double x, const Matrix & y){
+  Matrix out(y.num_rows(), y.num_columns());
+  for (int i = 0; i < y.num_rows(); ++i){
+    for (int j = 0; j < y.num_columns(); ++j) {
+      out[i][j] = x + y[i][j];
+    }
+  }
+  return out;
+}
+// y + (double x)
+Matrix operator+(const Matrix & y, const double x){
+  return x + y;
+}
+
+// (double x) - y
+Matrix operator-(const double x, const Matrix & y){
+  Matrix out(y.num_rows(), y.num_columns());
+  for (int i = 0; i < y.num_rows(); ++i){
+    for (int j = 0; j < y.num_columns(); ++j) {
+      out[i][j] = x - y[i][j];
+    }
+  }
+  return out;
+}
+// y - (double x)
+Matrix operator-(const Matrix & y, const double x){
+  Matrix out(y.num_rows(), y.num_columns());
+  for (int i = 0; i < y.num_rows(); ++i){
+    for (int j = 0; j < y.num_columns(); ++j) {
+      out[i][j] = y[i][j] - x;
+    }
+  }
+  return out;
+}
+
+// (double x) * y
+Matrix operator*(const double x, const Matrix & y){
+  Matrix out(y.num_rows(), y.num_columns());
+  for (int i = 0; i < y.num_rows(); ++i){
+    for (int j = 0; j < y.num_columns(); ++j) {
+      out[i][j] = x * y[i][j];
+    }
+  }
+  return out;
+}
+// y * (double x)
+Matrix operator*(const Matrix & y, const double x){
+  return x * y;
+}
+
+// (double x) / y
+Matrix operator/(const double x, const Matrix & y){
+  Matrix out(y.num_rows(), y.num_columns());
+  for (int i = 0; i < y.num_rows(); ++i){
+    for (int j = 0; j < y.num_columns(); ++j) {
+      out[i][j] = x / y[i][j];
+    }
+  }
+  return out;
+}
+// y / (double x)
+Matrix operator/(const Matrix & y, const double x){
+  Matrix out(y.num_rows(), y.num_columns());
+  for (int i = 0; i < y.num_rows(); ++i){
+    for (int j = 0; j < y.num_columns(); ++j) {
+      out[i][j] = y[i][j] / x;
+    }
+  }
+  return out;
+}
+
+Matrix operator+(const Matrix & x, const Matrix & y){
+  Matrix out(y.num_rows(), y.num_columns());
+  if (x.num_rows() == y.num_rows() && x.num_columns() == y.num_columns()){
+    for (int i = 0; i < y.num_rows(); ++i){
+      for (int j = 0; j < y.num_columns(); ++j){
+        out[i][j] = x[i][j] + y[i][j];
+      }
+    }
+  }else{
+    std::cout << "Incompatible dimensions in Matrix + operator: " << x.num_rows() << "x" << x.num_columns() <<" and " << y.num_rows() << "x" << y.num_columns() << std::endl;
+    //return -1;
+  }
+  return out;
+}
+
+Matrix operator-(const Matrix & x, const Matrix & y){
+  Matrix out(y.num_rows(), y.num_columns());
+  if (x.num_rows() == y.num_rows() && x.num_columns() == y.num_columns()){
+    for (int i = 0; i < y.num_rows(); ++i){
+      for (int j = 0; j < y.num_columns(); ++j){
+        out[i][j] = x[i][j] - y[i][j];
+      }
+    }
+  }else{
+    std::cout << "Incompatible dimensions in Matrix - operator: " << x.num_rows() << "x" << x.num_columns() <<" and " << y.num_rows() << "x" << y.num_columns() << std::endl;
+    //return -1;
+  }
+  return out;
+}
+
+Matrix operator*(const Matrix & x, const Matrix & y){
+  Matrix out(x.num_rows(), y.num_columns());
+  if (x.num_columns() == y.num_rows()){
+    for (int i = 0; i < x.num_rows(); ++i){
+      for (int j = 0; j < y.num_columns(); ++j){
+        for (int k = 0; k < y.num_rows(); ++k){
+          out[i][j] += x[i][k] * y[k][j];
+        }
+      }
+    }
+  }else{
+    std::cout << "Incompatible dimensions in Matrix * operator: " << x.num_rows() << "x" << x.num_columns() <<" and " << y.num_rows() << "x" << y.num_columns() << std::endl;
+    //return -1;
+  }
+  return out;
+}

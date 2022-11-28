@@ -12,10 +12,29 @@ class Matrix{
   double * operator[](const int i) const;
 
   void print();
+  
+  Matrix & operator=(const Matrix & x);
+  
  private:
   int _rows;
   int _columns;
   double ** _ptr;
 };
+
+Matrix operator+(const double x, const Matrix & y);
+Matrix operator+(const Matrix & y, const double x);
+Matrix operator+(const Matrix & x, const Matrix & y);
+
+Matrix operator-(const double x, const Matrix & y);
+Matrix operator-(const Matrix & y, const double x);
+Matrix operator-(const Matrix & x, const Matrix & y);
+
+Matrix operator*(const double x, const Matrix & y);
+Matrix operator*(const Matrix & y, const double x);
+Matrix operator*(const Matrix & x, const Matrix & y);
+
+Matrix operator/(const double x, const Matrix & y);
+Matrix operator/(const Matrix & y, const double x);
+
 
 #endif
