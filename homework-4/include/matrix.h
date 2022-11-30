@@ -1,6 +1,7 @@
 #ifndef _MATRIX
 #define _MATRIX
 
+template <typename T>
 class Matrix{
  public:
   Matrix(int rows, int columns);
@@ -9,7 +10,7 @@ class Matrix{
   
   int num_rows() const { return _rows; };
   int num_columns() const { return _columns; };
-  double * operator[](const int i) const;
+  T * operator[](const int i) const;
 
   void print();
   
@@ -18,23 +19,26 @@ class Matrix{
  private:
   int _rows;
   int _columns;
-  double ** _ptr;
+  T ** _ptr;
 };
 
-Matrix operator+(const double x, const Matrix & y);
-Matrix operator+(const Matrix & y, const double x);
-Matrix operator+(const Matrix & x, const Matrix & y);
+#include "matrix.tpp"
 
-Matrix operator-(const double x, const Matrix & y);
-Matrix operator-(const Matrix & y, const double x);
-Matrix operator-(const Matrix & x, const Matrix & y);
+/*
+Matrix<double> operator+(const double x, const Matrix<double> & y);
+Matrix<double> operator+(const Matrix<double> & y, const double x);
+Matrix<double> operator+(const Matrix<double> & x, const Matrix<double> & y);
 
-Matrix operator*(const double x, const Matrix & y);
-Matrix operator*(const Matrix & y, const double x);
-Matrix operator*(const Matrix & x, const Matrix & y);
+Matrix<double> operator-(const double x, const Matrix<double> & y);
+Matrix<double> operator-(const Matrix<double> & y, const double x);
+Matrix<double> operator-(const Matrix<double> & x, const Matrix<double> & y);
 
-Matrix operator/(const double x, const Matrix & y);
-Matrix operator/(const Matrix & y, const double x);
+Matrix<double> operator*(const double x, const Matrix<double> & y);
+Matrix<double> operator*(const Matrix<double> & y, const double x);
+Matrix<double> operator*(const Matrix<double> & x, const Matrix<double> & y);
 
+Matrix<double> operator/(const double x, const Matrix<double> & y);
+Matrix<double> operator/(const Matrix<double> & y, const double x);
+*/
 
 #endif

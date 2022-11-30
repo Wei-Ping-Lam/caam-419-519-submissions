@@ -1,6 +1,7 @@
 #ifndef _VECTOR
 #define _VECTOR
 
+template <typename T>
 class Vector{
 public:
   Vector(const int length);
@@ -11,28 +12,32 @@ public:
   void print();
 
   // for indexing (e.g., x[i] = 1.0);  
-  double & operator[](const int i) const;
+  T & operator[](const int i) const;
   
   Vector & operator=(const Vector & x);
   
 private:
   int length_;
-  double * ptr_;
+  T * ptr_;
 };
 
-Vector operator+(const double x, const Vector & y);
-Vector operator+(const Vector & y, const double x);
-Vector operator+(const Vector & x, const Vector & y);
+#include "vector.tpp"
 
-Vector operator-(const double x, const Vector & y);
-Vector operator-(const Vector & y, const double x);
-Vector operator-(const Vector & x, const Vector & y);
+/*
+Vector<double> operator+(const double x, const Vector<double> & y);
+Vector<double> operator+(const Vector<double> & y, const double x);
+Vector<double> operator+(const Vector<double> & x, const Vector<double> & y);
 
-Vector operator*(const double x, const Vector & y);
-Vector operator*(const Vector & y, const double x);
-double operator*(const Vector & x, const Vector & y);
+Vector<double> operator-(const double x, const Vector<double> & y);
+Vector<double> operator-(const Vector<double> & y, const double x);
+Vector<double> operator-(const Vector<double> & x, const Vector<double> & y);
 
-Vector operator/(const double x, const Vector & y);
-Vector operator/(const Vector & y, const double x);
+Vector<double> operator*(const double x, const Vector<double> & y);
+Vector<double> operator*(const Vector<double> & y, const double x);
+double operator*(const Vector<double> & x, const Vector<double> & y);
+
+Vector<double> operator/(const double x, const Vector<double> & y);
+Vector<double> operator/(const Vector<double> & y, const double x);
+*/
 
 #endif
