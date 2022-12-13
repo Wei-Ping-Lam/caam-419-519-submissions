@@ -26,7 +26,7 @@
     Yes trid=+5
     Yes upp=+5
     No the whole code. See logfile.out lines 131-137=-10.
-    Total = 5/15
+    Total = 5/15 -> 15/15 (JC: the memory leak was my fault)
     ```
 5. Deduct 1-2 points if the student does unnecessary things (like allocate unnecessary memory in the matrix-vector multiplication routines)
     ```
