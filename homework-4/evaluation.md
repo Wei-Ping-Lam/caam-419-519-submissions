@@ -44,8 +44,10 @@ yes=+5
 ```
 # Total
 ```
-100/100
+100/100---> 95/100
 ```
 
+```-5= should not include "matrix.tpp" inside header guards. ```
+```should not include "matrix.tpp" inside header guards```
 
 There are some issues with free, but given that debug tools for memory are not part of the syllabus, I will not remove any point, see logout for summary of your implementation.
